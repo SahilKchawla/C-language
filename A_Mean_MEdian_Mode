@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<math.h>
+float mean(float*,int);
+float var(float*,int);
+float std(float*,int);
+
+void main(){
+    float a[100];
+    int i,n;
+    float m,v,s;
+    printf("enter no of elements");
+    scanf("%d",&n);
+    printf("enter elements");
+    for(i=0;i<n;i++){
+        scanf("%f",&a[i]);
+    }
+    m=mean(a,n);
+    v=var(a,n);
+    s=std(a,n);
+    printf("the mean is %f",m);
+    printf("the var is %f",v);
+    printf("the std is %f",s);
+    
+}
+float mean(float *a,int n){
+    float sum=0;
+    int i;
+    for(i=0;i<n;i++){
+        sum=sum+a[i];
+    }
+    return sum/n;
+}
+float var(float *a,int n){
+    float sum=0,m;
+    int i;
+    m=mean(a,n);
+    for(i=0;i<n;i++){
+        sum=sum+((a[i]-m)*(a[i]-m));
+    }
+    return (sum/n);
+}
+float std(float *a,int n){
+    float v,sum;
+    v=var(a,n);
+    sum=sqrt(v);
+    return sum;
+}
